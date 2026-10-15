@@ -47,8 +47,7 @@ export default function App() {
     <div className="app-container">
       {/* Cabecera estilo App */}
       <header className="app-header">
-        <h1>🧙‍♂️ Emporio Arcano</h1>
-        <p>Edición Móvil para Android</p>
+        <h1>Estanteria Mágica</h1>
       </header>
 
       {/* Contenido scrolleable central */}
