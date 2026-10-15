@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Inicio from './components/Inicio';
-import Objetos from './components/Objetos';
-import DetalleObjeto from './components/DetalleObjeto';
-import Favoritos from './components/Favoritos';
-import Reglas from './components/Reglas';
-import ElMago from './components/ElMago';
-import Navbar from './components/Navbar';
+import Inicio from './componentes/Inicio';
+import Objetos from './componentes/Objetos';
+import DetalleObjeto from './componentes/DetalleObjeto';
+import Favoritos from './componentes/Favoritos';
+import Reglas from './componentes/Reglas';
+import ElMago from './componentes/ElMago';
+import Navbar from './componentes/Navbar';
 import './index.css';
 
 export default function App() {
