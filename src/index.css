@@ -1,10 +1,10 @@
 :root {
   --color-bg: #121019;
-  --color-card-bg: #1e1b2e;
-  --color-primary: #d4af37; /* Dorado mágico */
-  --color-text: #f0e6d2; /* Pergamino claro */
-  --color-accent: #8a2be2; /* Violeta místico */
-  --color-border: #4a3b6c;
+  --color-card-bg: rgba(18, 16, 25, 0.92); /* Fondo oscuro estilo retro */
+  --color-primary: #f8b229; /* Amarillo dorado estilo RPG clásico */
+  --color-text: #f0f0f0; 
+  --color-accent: #b052ff; 
+  --color-border: #4d3d6e;
 }
 
 /* Reset móvil */
@@ -12,19 +12,20 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  user-select: none; /* Da un aspecto más nativo al evitar selección accidental de texto */
+  user-select: none;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Cinzel', 'Georgia', sans-serif;
+  /* Cambiamos a fuente monoespaciada/retro para dar toque arcade/pixel */
+  font-family: 'Courier New', Courier, monospace, 'Cinzel';
   overflow-x: hidden;
 }
 
-/* Contenedor principal ajustado estrictamente a pantalla móvil */
+/* Contenedor principal con fondo pixel art difuminado */
 .app-container {
-  max-width: 480px; /* Ancho típico de dispositivo móvil */
+  max-width: 480px;
   height: 100vh;
   margin: 0 auto;
   display: flex;
@@ -32,101 +33,132 @@ body {
   position: relative;
   background-color: var(--color-bg);
   overflow: hidden;
+  z-index: 1;
 }
 
-/* Cabecera compacta móvil */
+/* Capa de fondo con la imagen de pixel art desenfocada */
+.app-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/magovendedor.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px) brightness(0.35);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+/* Cabecera estilo interfaz de videojuego retro */
 .app-header {
   text-align: center;
-  padding: 15px;
-  background-color: #0b090e;
-  border-bottom: 1px solid var(--color-primary);
+  padding: 14px;
+  background-color: rgba(11, 9, 14, 0.95);
+  border-bottom: 3px solid var(--color-primary);
   flex-shrink: 0;
+  box-shadow: 0 4px 0px rgba(0,0,0,0.5);
 }
 
 .app-header h1 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .app-header p {
-  font-size: 0.8rem;
-  font-style: italic;
-  opacity: 0.8;
+  font-size: 0.75rem;
+  color: #bfa885;
+  margin-top: 2px;
 }
 
-/* Área de contenido scrolleable */
+/* Área de contenido */
 .content-scroll {
   flex: 1;
   overflow-y: auto;
   padding: 15px;
-  padding-bottom: 80px; /* Espacio para que la barra inferior no tape el contenido */
+  padding-bottom: 90px;
 }
 
-/* Tarjetas de objetos mágicos estilo app */
+/* Tarjetas con bordes de bloque clásico (Pixel Art Style) */
 .magic-card {
   background-color: var(--color-card-bg);
-  border: 1px solid var(--color-primary);
-  border-radius: 12px;
+  border: 3px solid var(--color-primary);
+  border-radius: 0px; /* Bordes rectos característicos del Pixel Art */
   padding: 14px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  margin-bottom: 14px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8); /* Sombra dura de píxel */
 }
 
-.magic-card h3 {
-  font-size: 1.1rem;
+.magic-card h2, .magic-card h3 {
   color: var(--color-primary);
-  margin-bottom: 6px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
-.magic-card p {
-  font-size: 0.9rem;
+.magic-card p, .magic-card li {
+  font-size: 0.85rem;
   line-height: 1.4;
-  margin-bottom: 10px;
+  color: #e2dcd0;
 }
 
-/* Botones adaptados para toque táctil */
+/* Botones con aspecto de consola retro (efecto de relieve plano) */
 .magic-button {
   background-color: var(--color-primary);
   color: #121019;
-  border: none;
-  padding: 8px 14px;
+  border: 2px solid #fff;
+  border-radius: 0px;
+  padding: 8px 12px;
   font-weight: bold;
-  font-size: 0.85rem;
-  border-radius: 6px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s;
+  box-shadow: 2px 2px 0px #000;
+  transition: transform 0.1s;
 }
 
 .magic-button:active {
-  opacity: 0.7;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
-/* Inputs de búsqueda estilo móvil */
+/* Inputs de búsqueda estilo cuadro de texto RPG */
 .magic-input {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  background: #161322;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-  font-size: 0.95rem;
+  padding: 10px;
+  border-radius: 0px;
+  background: rgba(15, 13, 22, 0.95);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
   margin-bottom: 12px;
+  box-shadow: inset 2px 2px 0px rgba(0,0,0,0.8);
 }
 
 .magic-input:focus {
   outline: none;
-  border-color: var(--color-primary);
+  background: #1a1626;
 }
 
-/* Barra de navegación inferior fija para APK */
+select.magic-input option {
+  background: #121019;
+  color: var(--color-text);
+}
+
+/* Barra de navegación inferior estilo HUD de videojuego */
 .nav-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 65px;
-  background-color: #0b090e;
-  border-top: 1px solid var(--color-border);
+  background-color: rgba(8, 6, 12, 0.98);
+  border-top: 3px solid var(--color-primary);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -136,8 +168,9 @@ body {
 .nav-item {
   background: transparent;
   border: none;
-  color: #8b85a0;
-  font-size: 0.75rem;
+  color: #7b7196;
+  font-size: 0.7rem;
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
   cursor: pointer;
   flex: 1;
@@ -148,10 +181,11 @@ body {
 }
 
 .nav-item span.icon {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .nav-item.active {
   color: var(--color-primary);
   font-weight: bold;
+  text-shadow: 1px 1px 0px #000;
 }
