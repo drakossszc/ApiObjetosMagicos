@@ -5,7 +5,7 @@ import DetalleObjeto from './componentes/DetalleObjeto';
 import Favoritos from './componentes/Favoritos';
 import Reglas from './componentes/Reglas';
 import ElMago from './componentes/ElMago';
-import Navbar from './componentes/Navbar';
+import Navbar from './componentes/NavBar';
 import './index.css';
 
 export default function App() {
